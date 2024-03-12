@@ -8,6 +8,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Domain\Cloupard.Domain\Cloupard.Domain.csproj" />
+      <ProjectReference Include="..\..\Shared\Cloupard.Common\Cloupard.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Products\Query\" />
     </ItemGroup>
 
 </Project>

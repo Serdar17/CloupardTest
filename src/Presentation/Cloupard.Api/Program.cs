@@ -1,44 +1,40 @@
+using Cloupard.Api;
+using Cloupard.Api.Configuration;
+using Cloupard.Common.Settings;
+using Cloupard.Services.Logger.Logger;
+using Cloupard.Services.Settings.Settings;
+
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
+var mainSettings = Settings.Load<MainSettings>(MainSettings.SectionName);
+var logSettings = Settings.Load<LogSettings>(LogSettings.SectionName);
+var swaggerSettings = Settings.Load<SwaggerSettings>(SwaggerSettings.SectionName);
+
+builder.AddAppLogger(mainSettings, logSettings);
+
+services.AddHttpContextAccessor()
+    // .AddAppDbContext(builder.Configuration)
+    .AddAppCors()
+    .AddAppSwagger(mainSettings, swaggerSettings)
+    .AddAppValidator()
+    .AddAppController();
+
+services.RegisterServices();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+var logger = app.Services.GetRequiredService<IAppLogger>();
+app.UseAppCors();
 
-app.UseHttpsRedirection();
+app.UseAppSwagger();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseAppController();
 
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+app.UseAppMiddlewares();
+
+logger.Information("The Cloupard.Api has started");
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+logger.Information("The Cloupard.Api has started");

@@ -13,6 +13,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Application\Cloupard.Application\Cloupard.Application.csproj" />
       <ProjectReference Include="..\..\Domain\Cloupard.Domain\Cloupard.Domain.csproj" />
+      <ProjectReference Include="..\..\Shared\Cloupard.Common\Cloupard.Common.csproj" />
     </ItemGroup>
 
 </Project>
