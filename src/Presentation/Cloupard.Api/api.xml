@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cloupard.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Cloupard.Api.Configuration.AutoMapperConfiguration">
+            <summary>
+            AutoMapper configuration
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.AutoMapperConfiguration.AddAppAutoMappers(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add automappers
+            </summary>
+            <param name="services">Services collection</param>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.ControllerConfiguration.AddAppController(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.ControllerConfiguration.UseAppController(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cloupard.Api.Configuration.CorsConfiguration">
+            <summary>
+            CORS configuration
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.CorsConfiguration.AddAppCors(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add CORS
+            </summary>
+            <param name="services">Services collection</param>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.CorsConfiguration.UseAppCors(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Use service
+            </summary>
+            <param name="app">Application</param>
+        </member>
+        <member name="T:Cloupard.Api.Configuration.LoggerConfiguration">
+            <summary>
+            Logger Configuration
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.LoggerConfiguration.AddAppLogger(Microsoft.AspNetCore.Builder.WebApplicationBuilder,MainSettings,LogSettings)">
+            <summary>
+            Add logger
+            </summary>
+        </member>
+        <member name="T:Cloupard.Api.Configuration.MiddlewaresConfiguration">
+            <summary>
+            Extension for <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.MiddlewaresConfiguration.UseAppMiddlewares(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Extension method for <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>
+            </summary>
+            <param name="app"><see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/></param>
+        </member>
+        <member name="T:Cloupard.Api.Configuration.SwaggerConfiguration">
+            <summary>
+            Swagger configuration
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.SwaggerConfiguration.AddAppSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection,MainSettings,Cloupard.Services.Settings.Settings.SwaggerSettings)">
+            <summary>
+            Add OpenAPI to API
+            </summary>
+            <param name="services">Services collection</param>
+            <param name="mainSettings"></param>
+            <param name="swaggerSettings"></param>
+            <param name="identitySettings"></param>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.SwaggerConfiguration.UseAppSwagger(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Start OpenAPI UI
+            </summary>
+            <param name="app">Web application</param>
+        </member>
+        <member name="T:Cloupard.Api.Configuration.ValidatorConfiguration">
+            <summary>
+            Validation configuration
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.ValidatorConfiguration.AddAppValidator(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adding app validation
+            </summary>
+            <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cloupard.Api.Configuration.VersioningConfiguration">
+            <summary>
+            Versioning configuration
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Configuration.VersioningConfiguration.AddAppVersioning(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Add version support for API
+            </summary>
+            <param name="services">Services collection</param>
+        </member>
+        <member name="T:Cloupard.Api.Controllers.Product.Models.AddProductRequest">
+            <summary>
+            Add product request
+            </summary>
+        </member>
+        <member name="P:Cloupard.Api.Controllers.Product.Models.AddProductRequest.Name">
+            <summary>
+            Product name
+            </summary>
+            <example>Andrey</example>
+        </member>
+        <member name="P:Cloupard.Api.Controllers.Product.Models.AddProductRequest.Description">
+            <summary>
+            Product description (optional)
+            </summary>
+        </member>
+        <member name="T:Cloupard.Api.Controllers.Product.Models.AddProductRequestValidator">
+            <summary>
+            Validation rules for <see cref="T:Cloupard.Api.Controllers.Product.Models.AddProductRequest"/>
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Controllers.Product.Models.AddProductRequestValidator.#ctor">
+            <summary>
+            Ctor for <see cref="T:Cloupard.Api.Controllers.Product.Models.AddProductRequestValidator"/>
+            </summary>
+        </member>
+        <member name="T:Cloupard.Api.Controllers.Product.Models.AddProductRequestProfile">
+            <summary>
+            Mapping rules for <see cref="T:Cloupard.Api.Controllers.Product.Models.AddProductRequest"/>
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Controllers.Product.Models.AddProductRequestProfile.#ctor">
+            <summary>
+            Ctor for <see cref="T:Cloupard.Api.Controllers.Product.Models.AddProductRequestProfile"/>
+            </summary>
+        </member>
+        <member name="T:Cloupard.Api.Controllers.Product.Models.UpdateProductRequest">
+            <summary>
+            Update product request
+            </summary>
+        </member>
+        <member name="P:Cloupard.Api.Controllers.Product.Models.UpdateProductRequest.Id">
+            <summary>
+            Product id
+            </summary>
+        </member>
+        <member name="P:Cloupard.Api.Controllers.Product.Models.UpdateProductRequest.Name">
+            <summary>
+            Product name
+            </summary>
+        </member>
+        <member name="P:Cloupard.Api.Controllers.Product.Models.UpdateProductRequest.Description">
+            <summary>
+            Product description (optional)
+            </summary>
+        </member>
+        <member name="T:Cloupard.Api.Controllers.Product.Models.UpdateProductRequestValidator">
+            <summary>
+            Mapping rules for <see cref="T:Cloupard.Api.Controllers.Product.Models.UpdateProductRequest"/>
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Controllers.Product.Models.UpdateProductRequestValidator.#ctor">
+            <summary>
+            ctor for <see cref="T:Cloupard.Api.Controllers.Product.Models.UpdateProductRequestValidator"/>
+            </summary>
+        </member>
+        <member name="T:Cloupard.Api.Controllers.Product.Models.UpdateProductRequestProfile">
+            <summary>
+            Mapping rules for <see cref="T:Cloupard.Api.Controllers.Product.Models.UpdateProductRequest"/>
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Controllers.Product.Models.UpdateProductRequestProfile.#ctor">
+            <summary>
+            Ctor for <see cref="T:Cloupard.Api.Controllers.Product.Models.UpdateProductRequestProfile"/>
+            </summary>
+        </member>
+        <member name="T:Cloupard.Api.Controllers.Product.ProductController">
+            <summary>
+            Product controller
+            </summary>
+            <response code="400">Bad Request</response>;
+            <response code="401">Unauthorized</response>;
+            <response code="403">Forbidden</response>;
+            <response code="404">Not Found</response>;
+            <response code="409">Conflict</response>;
+        </member>
+        <member name="M:Cloupard.Api.Controllers.Product.ProductController.#ctor(MediatR.ISender,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:Cloupard.Api.Controllers.Product.ProductController.AddProductAsync(Cloupard.Api.Controllers.Product.Models.AddProductRequest)">
+            <summary>
+            Add product
+            </summary>
+            <param name="request">Add product request</param>
+        </member>
+        <member name="M:Cloupard.Api.Controllers.Product.ProductController.UpdateProductAsync(Cloupard.Api.Controllers.Product.Models.UpdateProductRequest)">
+            <summary>
+            Update product
+            </summary>
+            <param name="request">Update product request</param>
+        </member>
+        <member name="M:Cloupard.Api.Controllers.Product.ProductController.DeleteProductAsync(System.Guid)">
+            <summary>
+            Delete product by id
+            </summary>
+            <param name="productId">Unique product id</param>
+            <returns></returns>
+        </member>
+        <member name="T:Cloupard.Api.DependencyInjection">
+            <summary>
+            Extension method
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.DependencyInjection.RegisterServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registration services
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cloupard.Api.Middlewares.ExceptionsMiddleware">
+            <summary>
+            Exception handling middleware
+            </summary>
+        </member>
+        <member name="M:Cloupard.Api.Middlewares.ExceptionsMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Constructor for Exception handling middleware
+            </summary>
+            <param name="next">RequestDelegate</param>
+        </member>
+        <member name="M:Cloupard.Api.Middlewares.ExceptionsMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+    </members>
+</doc>
