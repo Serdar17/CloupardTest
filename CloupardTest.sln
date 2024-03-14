@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloupard.Services.Logger", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloupard.Services.Settings", "src\Services\Cloupard.Services.Settings\Cloupard.Services.Settings.csproj", "{6EC83810-1C68-4D65-ACD5-3A4270B385C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloupard.MVC", "src\Presentation\Cloupard.MVC\Cloupard.MVC.csproj", "{4200BC06-C93C-4B19-851A-82247BABD85A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,7 @@ Global
 		{AA752D14-7939-4780-A5E1-9167ED42C625} = {64A3CDE9-8116-44E7-A531-BFB77D829621}
 		{926E7AA7-2D72-446E-8426-98D13169BD93} = {AA752D14-7939-4780-A5E1-9167ED42C625}
 		{6EC83810-1C68-4D65-ACD5-3A4270B385C0} = {AA752D14-7939-4780-A5E1-9167ED42C625}
+		{4200BC06-C93C-4B19-851A-82247BABD85A} = {089F798D-9E6A-4015-A5B7-41A49556510D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CAA9A9C5-F5F3-4FF5-9748-8AE1027A072B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -79,5 +82,9 @@ Global
 		{6EC83810-1C68-4D65-ACD5-3A4270B385C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC83810-1C68-4D65-ACD5-3A4270B385C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC83810-1C68-4D65-ACD5-3A4270B385C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4200BC06-C93C-4B19-851A-82247BABD85A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4200BC06-C93C-4B19-851A-82247BABD85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4200BC06-C93C-4B19-851A-82247BABD85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4200BC06-C93C-4B19-851A-82247BABD85A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

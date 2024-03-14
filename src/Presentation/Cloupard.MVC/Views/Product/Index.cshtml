@@ -1,0 +1,188 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Products Page";
+}
+
+<div class="d-flex justify-content-between align-items-center mt-4 mb-4">
+    <div>
+        <form asp-action="Index" asp-controller="Product" method="get">
+            <div class="input-group">
+                <input asp-for="SearchValue" class="form-control border-end-0 border" type="search" placeholder="Поиск" id="example-search-input">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary bg-white border-start-0 border ms-n5" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div>
+    
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+        Создать продукт
+    </button>
+    
+</div>
+
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th class="w-25">Id</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th class="w-25"></th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    @foreach(var product in Model.Products)
+    {
+        <tr>
+            <th>@product.Id</th>
+            <th>@product.Name</th>
+            <th>@product.Description</th>
+            <td>
+                <button type="button" class="btn btn-outline-warning" id="updateProduct" data-toggle="modal" data-target="#updateProductModal" onclick="updateProduct('@product.Id')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-outline-danger" id="deleteProduct" data-toggle="modal" data-target="#deleteProductModal" onclick="deleteProduct('@product.Id')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-trash" viewBox="0 0 15 15">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                    </svg>
+                </button>
+                
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<!-- Update product Modal -->
+<div id="updateProductModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form asp-action="Update" asp-controller="Product" asp-antiforgery="true">
+                <div class="modal-header">
+                    <h5 class="modal-title">Изменить товар</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="productId" id="product_id" type="hidden" asp-for="ProductModel.Id">
+                        <label asp-for="ProductModel.Name" class="control-label"></label>
+                        <input asp-for="ProductModel.Name" class="form-control" id="productName"/>
+                        <span asp-validation-for="ProductModel.Name" class="text-danger"></span>
+    
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductModel.Description" class="control-label"></label>
+                        <textarea asp-for="ProductModel.Description" class="form-control" id="productDescription"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+                            
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Create product Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form asp-action="Create" asp-controller="Product" asp-antiforgery="true">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Создать продукт</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    
+                    <div class="form-group">
+                        <label asp-for="ProductModel.Name" class="control-label"></label>
+                        <input asp-for="ProductModel.Name" class="form-control"/>
+                        <span asp-validation-for="ProductModel.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductModel.Description" class="control-label"></label>
+                        <textarea asp-for="ProductModel.Description" class="form-control"></textarea>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+@* Delete product Model *@
+<div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form asp-action="Delete" asp-controller="Product" asp-antiforgery="true">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Удалить продукт</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="modal-body">
+                    <input class="productId" id="productId" type="hidden" asp-for="ProductModel.Id">
+                    <h3>Вы действительно хотите удалить продукт?</h3>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    <button type="submit" id="DeleteProductButton" class="btn btn-danger">Удалить</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>   
+        function deleteProduct(id){
+                $("#productId").val(id);
+        }
+        
+        function updateProduct(id){
+            $.ajax({
+                type: "GET",
+                url: "/Product/GetById/",
+                data: { id:id},
+                success: function (product) {
+                    $("#productName").val(product.name);
+                    $("#productDescription").val(product.description);
+                    $("#product_id").val(product.id);
+                }
+            })
+        }
+    
+    </script>
+
+}
+
