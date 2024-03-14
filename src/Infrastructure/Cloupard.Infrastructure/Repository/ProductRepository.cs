@@ -15,9 +15,9 @@ public class ProductRepository : IProductRepository
         _context = context;
     }
 
-    public Task<IQueryable<Product>> GetAllAsync(CancellationToken cancellationToken = default)
+    public async Task<IQueryable<Product>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return _context.Products.AsQueryable();
     }
 
     public Task<IQueryable<Product>> GetAllAsync(Expression<Func<Product, bool>> predicate)

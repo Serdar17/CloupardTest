@@ -12,7 +12,7 @@ public class AddProductRequest
     /// <summary>
     /// Product name
     /// </summary>
-    /// <example>Andrey</example>
+    /// <example>Laptop</example>
     public required string Name { get; set; }
 
     /// <summary>

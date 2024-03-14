@@ -5,6 +5,8 @@ using Cloupard.Application.Products.Commands.AddProduct;
 using Cloupard.Application.Products.Commands.DeleteProduct;
 using Cloupard.Application.Products.Commands.UpdateProduct;
 using Cloupard.Application.Products.Models;
+using Cloupard.Application.Products.Query.GetAllProducts;
+using Cloupard.Application.Products.Query.GetProductById;
 using Cloupard.Common.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +39,39 @@ public class ProductController : ControllerBase
     {
         _sender = sender;
         _mapper = mapper;
+    }
+
+    /// <summary>
+    /// Get all products
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<ProductModel>), 200)]
+    public async Task<IResult> GetAllProductsAsync([FromQuery] string? searchValue)
+    {
+        var query = new GetAllProductsQuery(searchValue);
+        var result = await _sender.Send(query);
+
+        if (result.IsSuccess)
+            return Results.Ok(result.Value);
+
+        return result.ToProblemDetails();
+    }
+
+    /// <summary>
+    /// Get product by id
+    /// </summary>
+    /// <param name="productId">Unique product id</param>
+    [HttpGet("{productId:guid}")]
+    public async Task<IResult> GetProductByIdAsync([FromRoute] Guid productId)
+    {
+        var query = new GetProductByIdQuery(productId);
+        var result = await _sender.Send(query);
+
+        if (result.IsSuccess)
+            return Results.Ok(result.Value);
+
+        return result.ToProblemDetails();
     }
 
     /// <summary>

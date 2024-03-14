@@ -23,7 +23,6 @@ public static class DependencyInjection
             .AddMainSettings()
             .AddSwaggerSettings()
             .AddLogSettings()
-            .AddWebSettings()
             .AddAppVersioning()
             .AddInfrastructure()
             .AddApplication()
