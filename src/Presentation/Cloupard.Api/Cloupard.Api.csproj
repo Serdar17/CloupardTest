@@ -34,18 +34,18 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\..\Application\Cloupard.Application\Cloupard.Application.csproj" />
       <ProjectReference Include="..\..\Domain\Cloupard.Domain\Cloupard.Domain.csproj" />
       <ProjectReference Include="..\..\Infrastructure\Cloupard.Infrastructure\Cloupard.Infrastructure.csproj" />
       <ProjectReference Include="..\..\Services\Cloupard.Services.Logger\Cloupard.Services.Logger.csproj" />
       <ProjectReference Include="..\..\Services\Cloupard.Services.Settings\Cloupard.Services.Settings.csproj" />
       <ProjectReference Include="..\..\Shared\Cloupard.Common\Cloupard.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

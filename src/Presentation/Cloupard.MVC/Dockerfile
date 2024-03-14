@@ -8,6 +8,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/Presentation/Cloupard.MVC/Cloupard.MVC.csproj", "src/Presentation/Cloupard.MVC/"]
+COPY ["src/Services/Cloupard.Services.Settings/Cloupard.Services.Settings.csproj", "src/Services/Cloupard.Services.Settings/"]
+COPY ["src/Shared/Cloupard.Common/Cloupard.Common.csproj", "src/Shared/Cloupard.Common/"]
+COPY ["src/Domain/Cloupard.Domain/Cloupard.Domain.csproj", "src/Domain/Cloupard.Domain/"]
+COPY ["src/Services/Cloupard.Services.Logger/Cloupard.Services.Logger.csproj", "src/Services/Cloupard.Services.Logger/"]
 RUN dotnet restore "src/Presentation/Cloupard.MVC/Cloupard.MVC.csproj"
 COPY . .
 WORKDIR "/src/src/Presentation/Cloupard.MVC"

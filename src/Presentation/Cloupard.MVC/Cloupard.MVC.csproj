@@ -8,12 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="..\..\..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\..\Services\Cloupard.Services.Logger\Cloupard.Services.Logger.csproj" />
       <ProjectReference Include="..\..\Services\Cloupard.Services.Settings\Cloupard.Services.Settings.csproj" />
     </ItemGroup>
@@ -22,6 +16,12 @@
       <PackageReference Include="Serilog" Version="4.0.0-dev-02122" />
       <PackageReference Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
       <PackageReference Include="Serilog.Sinks.File.Archive" Version="1.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

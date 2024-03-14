@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  cloupard_api:
+    ports:
+      - "5050:8080"
+    networks: 
+      - shared_cloupard
+    env_file:
+      - env.api
+  
+  cloupard_mvc:
+    ports:
+      - "5051:8080"
+    networks:
+      - shared_cloupard
+    env_file:
+      - env.mvc
+
+networks:
+  shared_cloupard:
+    driver: bridge
