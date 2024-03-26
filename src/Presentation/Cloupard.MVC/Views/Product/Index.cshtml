@@ -67,7 +67,7 @@
 <div id="updateProductModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form asp-action="Update" asp-controller="Product" asp-antiforgery="true">
+            <form id="UpdateForm" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title">Изменить товар</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-primary" id="updateForm">Сохранить</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                 </div>
                             
@@ -123,8 +123,8 @@
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                     <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                 </div>
             </form>
             
@@ -165,6 +165,22 @@
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 
     <script>   
+    
+        $(document).ready(() => {
+            $("#updateForm").click(() => {
+                const product = $("#UpdateForm").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/Product/Update/",
+                    data: product,
+                    success: () => {
+                        window.location.href = "/";
+                    }
+                })
+          
+            })
+        })
+        
         function deleteProduct(id){
                 $("#productId").val(id);
         }
@@ -173,7 +189,7 @@
             $.ajax({
                 type: "GET",
                 url: "/Product/GetById/",
-                data: { id:id},
+                data: { id: id},
                 success: function (product) {
                     $("#productName").val(product.name);
                     $("#productDescription").val(product.description);
@@ -183,6 +199,4 @@
         }
     
     </script>
-
 }
-

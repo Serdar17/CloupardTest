@@ -4,6 +4,7 @@ using System.Text.Json;
 using Cloupard.MVC.Models;
 using Cloupard.Services.Logger.Logger;
 using Cloupard.Services.Settings.Settings;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Cloupard.MVC.Services;
 
@@ -65,7 +66,6 @@ public class ProductService : IProductService
 
     public async Task DeleteProductAsync(Guid productId)
     {
-        // TODO: fix errors
         var response = await _client.DeleteAsync($"{_root}/{productId}");
         if (response.IsSuccessStatusCode)
         {
