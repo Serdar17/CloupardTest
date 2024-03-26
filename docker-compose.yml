@@ -1,11 +1,16 @@
 version: '3.4'
 
 services: 
+  cloupard_sqldata:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+
   cloupard_api:
     image: ${DOCKER_REGISTRY-}cloupard_api
     build:
       context: .
       dockerfile: src/Presentation/Cloupard.Api/Dockerfile
+    depends_on: 
+      - cloupard_sqldata
   
   cloupard_mvc:
     image: ${DOCKER_REGISTRY-}cloupard_mvc
