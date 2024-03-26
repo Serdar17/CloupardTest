@@ -15,7 +15,7 @@ dotnet run --project ./src/Presentation/Cloupard.MVC
 ```
 
 ### DOCKER COMPOSE
-Для запуска через `docker-compose.yml` необходимо вставить в `env.api` строку подключение к СУБД
+Для запуска через `docker-compose.yml`
 
 Для запуска
 
