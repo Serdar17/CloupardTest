@@ -32,6 +32,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloupard.Services.Settings"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloupard.MVC", "src\Presentation\Cloupard.MVC\Cloupard.MVC.csproj", "{4200BC06-C93C-4B19-851A-82247BABD85A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_docker", "_docker", "{8A308226-CC23-45E3-BF62-54740FF653EA}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.yml = docker-compose.yml
+		env.api = env.api
+		env.mvc = env.mvc
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloupard.Application.UnitTests", "test\Cloupard.Application.UnitTests\Cloupard.Application.UnitTests.csproj", "{2EE89175-F6B6-4490-8020-D5405B3873DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +62,7 @@ Global
 		{926E7AA7-2D72-446E-8426-98D13169BD93} = {AA752D14-7939-4780-A5E1-9167ED42C625}
 		{6EC83810-1C68-4D65-ACD5-3A4270B385C0} = {AA752D14-7939-4780-A5E1-9167ED42C625}
 		{4200BC06-C93C-4B19-851A-82247BABD85A} = {089F798D-9E6A-4015-A5B7-41A49556510D}
+		{2EE89175-F6B6-4490-8020-D5405B3873DD} = {0E5B2705-6B64-454F-B395-EE9D340F7FC3}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CAA9A9C5-F5F3-4FF5-9748-8AE1027A072B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -86,5 +97,9 @@ Global
 		{4200BC06-C93C-4B19-851A-82247BABD85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4200BC06-C93C-4B19-851A-82247BABD85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4200BC06-C93C-4B19-851A-82247BABD85A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE89175-F6B6-4490-8020-D5405B3873DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE89175-F6B6-4490-8020-D5405B3873DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE89175-F6B6-4490-8020-D5405B3873DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE89175-F6B6-4490-8020-D5405B3873DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

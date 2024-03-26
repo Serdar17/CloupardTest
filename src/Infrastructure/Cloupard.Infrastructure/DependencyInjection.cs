@@ -1,9 +1,10 @@
 ﻿using Cloupard.Domain.Context;
 using Cloupard.Domain.Repository;
 using Cloupard.Infrastructure.Context;
+using Cloupard.Infrastructure.Factories;
 using Cloupard.Infrastructure.Repository;
 using Cloupard.Infrastructure.Settings;
-using Microsoft.EntityFrameworkCore;
+using HandmadeShop.Context.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,14 +17,16 @@ public static class DependencyInjection
         var settings = Common.Settings.Settings.Load<DbSettings>(DbSettings.SectionName, configuration);
         services.AddSingleton(settings);
         
-        services.AddDbContext<AppDbContext>(options => options.UseSqlServer(settings.ConnectionString));
+        var dbInitOptionsDelegate = DbContextOptionsFactory.Configure(settings.ConnectionString, DbType.MSSQL, true);
+        services.AddDbContextFactory<AppDbContext>(dbInitOptionsDelegate);
+        
+        services.AddDbContext<AppDbContext>(dbInitOptionsDelegate);
         
         services.AddScoped<IAppDbContext, AppDbContext>();
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddTransient(typeof(Lazy<>));
-        
         
         return services;
     }

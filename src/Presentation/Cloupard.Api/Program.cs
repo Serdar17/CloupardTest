@@ -1,6 +1,7 @@
 using Cloupard.Api;
 using Cloupard.Api.Configuration;
 using Cloupard.Common.Settings;
+using Cloupard.Infrastructure.Setup;
 using Cloupard.Services.Logger.Logger;
 using Cloupard.Services.Settings.Settings;
 
@@ -15,7 +16,6 @@ var swaggerSettings = Settings.Load<SwaggerSettings>(SwaggerSettings.SectionName
 builder.AddAppLogger(mainSettings, logSettings);
 
 services.AddHttpContextAccessor()
-    // .AddAppDbContext(builder.Configuration)
     .AddAppCors()
     .AddAppSwagger(mainSettings, swaggerSettings)
     .AddAppValidator()
@@ -32,6 +32,9 @@ app.UseAppSwagger();
 app.UseAppController();
 
 app.UseAppMiddlewares();
+
+DbInitializer.Execute(app.Services);
+DbSeeder.Execute(app.Services);
 
 logger.Information("The Cloupard.Api has started");
 
